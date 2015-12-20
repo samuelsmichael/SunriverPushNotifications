@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SunriverNotificationsWcfService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SunriverNotificationsWcfService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PushNotificationSend">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WcfSend">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Topic" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PushNotificationSend" nillable="true" type="tns:PushNotificationSend" />
+  <xs:complexType name="WcfSend">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="WcfSend" nillable="true" type="tns:WcfSend" />
+  <xs:complexType name="PushNotificationReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:WcfReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MessageID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PushNotificationReturn" nillable="true" type="tns:PushNotificationReturn" />
+  <xs:complexType name="WcfReturn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StackTrace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuccessMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WCFCallSuccess" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WcfReturn" nillable="true" type="tns:WcfReturn" />
+</xs:schema>
