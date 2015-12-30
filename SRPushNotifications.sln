@@ -9,6 +9,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRPushNotificationsWebApp", "SRPushNotificationsWebApp\SRPushNotificationsWebApp.csproj", "{154D5CC9-DE2C-4783-AA86-7AC0937F2C2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRPushNotificationsWindowsService", "SRPushNotificationsWindowsService\SRPushNotificationsWindowsService.csproj", "{88B6A0C6-44EC-4213-A6DA-CFAAC1ECBA8F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8AFC714F-299A-44E0-AB6E-0963C44CFB3E} = {8AFC714F-299A-44E0-AB6E-0963C44CFB3E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{03CF37F8-8F5B-4D57-B9AD-23862CEAFA44}"
 EndProject

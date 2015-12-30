@@ -12,7 +12,7 @@ namespace SunriverNotificationsWcfService {
         public PushNotificationReturn PushNotification(PushNotificationSend send) {
             PushNotificationReturn ret = new PushNotificationReturn();
             try {
-                NotificationManager nm = new NotificationManager(send.Title, send.Message, send.Topic);
+                NotificationManager nm = new NotificationManager(send.Title, send.Message, send.Topic,send.NotificationKey);
                 String result=nm.SendNotification();
                 ret.SuccessMessage = result;
                 ret.WCFCallSuccess = true;

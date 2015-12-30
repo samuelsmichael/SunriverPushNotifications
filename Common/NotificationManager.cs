@@ -10,12 +10,19 @@ namespace Common {
         private string _title;
         private string _message;
         private string _topic;
-        private static string NotificationKey = "AIzaSyDWkfA5KGwQDgGl03oB80OGCoo8iiJ_QP8";
+        //private static string NotificationKey = "AIzaSyDWkfA5KGwQDgGl03oB80OGCoo8iiJ_QP8";
+        private string _NotificationKey = "AIzaSyA6lWELL3Ta-hRnG3632OyWS1l-PfwYpvI";
+        private string NotificationKey {
+            get {
+                return _NotificationKey;
+            }
+        }
 
-        public NotificationManager(String title, String message, string topic) {
+        public NotificationManager(String title, String message, string topic, string notificationKey) {
             _title = title;
             _message = message;
             _topic = topic;
+            _NotificationKey = notificationKey;
         }
 
         public string SendNotification()

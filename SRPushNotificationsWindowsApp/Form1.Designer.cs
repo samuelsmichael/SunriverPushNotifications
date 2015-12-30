@@ -30,11 +30,15 @@
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.Results = new System.Windows.Forms.Label();
             this.labelResults = new System.Windows.Forms.Label();
+            this.radioButtonIsTestNotification = new System.Windows.Forms.RadioButton();
+            this.radioButtonIsSunriverNotification = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(335, 194);
+            this.button1.Location = new System.Drawing.Point(335, 245);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 100;
@@ -80,7 +84,7 @@
             // Results
             // 
             this.Results.AutoSize = true;
-            this.Results.Location = new System.Drawing.Point(36, 222);
+            this.Results.Location = new System.Drawing.Point(36, 274);
             this.Results.Name = "Results";
             this.Results.Size = new System.Drawing.Size(45, 13);
             this.Results.TabIndex = 7;
@@ -90,16 +94,50 @@
             // labelResults
             // 
             this.labelResults.AutoSize = true;
-            this.labelResults.Location = new System.Drawing.Point(87, 222);
+            this.labelResults.Location = new System.Drawing.Point(87, 274);
             this.labelResults.Name = "labelResults";
             this.labelResults.Size = new System.Drawing.Size(0, 13);
             this.labelResults.TabIndex = 8;
+            // 
+            // radioButtonIsTestNotification
+            // 
+            this.radioButtonIsTestNotification.AutoSize = true;
+            this.radioButtonIsTestNotification.Checked = true;
+            this.radioButtonIsTestNotification.Location = new System.Drawing.Point(27, 19);
+            this.radioButtonIsTestNotification.Name = "radioButtonIsTestNotification";
+            this.radioButtonIsTestNotification.Size = new System.Drawing.Size(107, 17);
+            this.radioButtonIsTestNotification.TabIndex = 101;
+            this.radioButtonIsTestNotification.TabStop = true;
+            this.radioButtonIsTestNotification.Text = "Is test notification";
+            this.radioButtonIsTestNotification.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonIsSunriverNotification
+            // 
+            this.radioButtonIsSunriverNotification.AutoSize = true;
+            this.radioButtonIsSunriverNotification.Location = new System.Drawing.Point(151, 19);
+            this.radioButtonIsSunriverNotification.Name = "radioButtonIsSunriverNotification";
+            this.radioButtonIsSunriverNotification.Size = new System.Drawing.Size(134, 17);
+            this.radioButtonIsSunriverNotification.TabIndex = 102;
+            this.radioButtonIsSunriverNotification.Text = "Is Sunriver Notification ";
+            this.radioButtonIsSunriverNotification.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButtonIsTestNotification);
+            this.groupBox1.Controls.Add(this.radioButtonIsSunriverNotification);
+            this.groupBox1.Location = new System.Drawing.Point(86, 194);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(324, 45);
+            this.groupBox1.TabIndex = 103;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Notification Receiver";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 342);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelResults);
             this.Controls.Add(this.Results);
             this.Controls.Add(this.textBoxTitle);
@@ -109,6 +147,8 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Sunriver Send Test Notification";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,6 +163,9 @@
         private System.Windows.Forms.TextBox textBoxTitle;
         private System.Windows.Forms.Label Results;
         private System.Windows.Forms.Label labelResults;
+        private System.Windows.Forms.RadioButton radioButtonIsTestNotification;
+        private System.Windows.Forms.RadioButton radioButtonIsSunriverNotification;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
