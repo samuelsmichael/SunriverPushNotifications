@@ -39,6 +39,8 @@ namespace SunriverNotificationsWcfService {
         public string Title { get; set; }
         [DataMember]
         public string NotificationKey { get; set; }
+        [DataMember]
+        public string EmergencyMapURL { get; set; }
     }
 
     [DataContract]

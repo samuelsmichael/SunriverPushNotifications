@@ -10,26 +10,33 @@ namespace Common {
         private string _title;
         private string _message;
         private string _topic;
+        private string _emergencyMapUrl;
         //private static string NotificationKey = "AIzaSyDWkfA5KGwQDgGl03oB80OGCoo8iiJ_QP8";
-        private string _NotificationKey = "AIzaSyA6lWELL3Ta-hRnG3632OyWS1l-PfwYpvI";
+        //private string _NotificationKey = "AIzaSyA6lWELL3Ta-hRnG3632OyWS1l-PfwYpvI";
+        private string _NotificationKey;
         private string NotificationKey {
             get {
                 return _NotificationKey;
             }
         }
 
-        public NotificationManager(String title, String message, string topic, string notificationKey) {
+        public NotificationManager(String title, String message, string topic, string notificationKey, string emergencyMapUrl) {
             _title = title;
             _message = message;
             _topic = topic;
             _NotificationKey = notificationKey;
+            _emergencyMapUrl = emergencyMapUrl;
         }
 
         public string SendNotification()
         {
             Stream dataStream = null;
             try {
-                string postData = "{ \"to\" : \"/topics/" + _topic + "\", \"data\": {\"message\": \"" + _message + "\", \"contentTitle\": \"" + _title + "\" } }";
+                string postData = "{ \"to\" : \"/topics/" + _topic + "\", \"data\": {"+
+                    "\"message\": \"" + _message + "\", " +
+                    "\"contentTitle\": \"" + _title + "\" "+
+                    "\"emergencyMapURL\": \"" + _emergencyMapUrl + "\" " +
+                    "} }";
                 byte[] byteArray = Encoding.UTF8.GetBytes(postData);
                 HttpWebRequest Request = (HttpWebRequest)WebRequest.Create("https://gcm-http.googleapis.com/gcm/send");
                 Request.Method = "POST";

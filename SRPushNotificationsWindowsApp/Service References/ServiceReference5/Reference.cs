@@ -50,6 +50,9 @@ namespace SRPushNotificationsWindowsApp.ServiceReference5 {
     public partial class PushNotificationSend : SRPushNotificationsWindowsApp.ServiceReference5.WcfSend {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmergencyMapURLField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -60,6 +63,19 @@ namespace SRPushNotificationsWindowsApp.ServiceReference5 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TopicField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EmergencyMapURL {
+            get {
+                return this.EmergencyMapURLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmergencyMapURLField, value) != true)) {
+                    this.EmergencyMapURLField = value;
+                    this.RaisePropertyChanged("EmergencyMapURL");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Message {

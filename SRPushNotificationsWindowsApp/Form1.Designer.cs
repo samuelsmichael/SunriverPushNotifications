@@ -30,15 +30,18 @@
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.Results = new System.Windows.Forms.Label();
             this.labelResults = new System.Windows.Forms.Label();
-            this.radioButtonIsTestNotification = new System.Windows.Forms.RadioButton();
-            this.radioButtonIsSunriverNotification = new System.Windows.Forms.RadioButton();
+            this.radioButtonAlertNotification = new System.Windows.Forms.RadioButton();
+            this.radioButtonIsNewsfeed = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonIsEmergency = new System.Windows.Forms.RadioButton();
+            this.labelMapURL = new System.Windows.Forms.Label();
+            this.textBoxEmergencyMapURL = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(335, 245);
+            this.button1.Location = new System.Drawing.Point(335, 268);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 100;
@@ -84,7 +87,7 @@
             // Results
             // 
             this.Results.AutoSize = true;
-            this.Results.Location = new System.Drawing.Point(36, 274);
+            this.Results.Location = new System.Drawing.Point(36, 299);
             this.Results.Name = "Results";
             this.Results.Size = new System.Drawing.Size(45, 13);
             this.Results.TabIndex = 7;
@@ -94,49 +97,84 @@
             // labelResults
             // 
             this.labelResults.AutoSize = true;
-            this.labelResults.Location = new System.Drawing.Point(87, 274);
+            this.labelResults.Location = new System.Drawing.Point(87, 299);
             this.labelResults.Name = "labelResults";
             this.labelResults.Size = new System.Drawing.Size(0, 13);
             this.labelResults.TabIndex = 8;
             // 
-            // radioButtonIsTestNotification
+            // radioButtonAlertNotification
             // 
-            this.radioButtonIsTestNotification.AutoSize = true;
-            this.radioButtonIsTestNotification.Checked = true;
-            this.radioButtonIsTestNotification.Location = new System.Drawing.Point(27, 19);
-            this.radioButtonIsTestNotification.Name = "radioButtonIsTestNotification";
-            this.radioButtonIsTestNotification.Size = new System.Drawing.Size(107, 17);
-            this.radioButtonIsTestNotification.TabIndex = 101;
-            this.radioButtonIsTestNotification.TabStop = true;
-            this.radioButtonIsTestNotification.Text = "Is test notification";
-            this.radioButtonIsTestNotification.UseVisualStyleBackColor = true;
+            this.radioButtonAlertNotification.AutoSize = true;
+            this.radioButtonAlertNotification.Checked = true;
+            this.radioButtonAlertNotification.Location = new System.Drawing.Point(27, 19);
+            this.radioButtonAlertNotification.Name = "radioButtonAlertNotification";
+            this.radioButtonAlertNotification.Size = new System.Drawing.Size(46, 17);
+            this.radioButtonAlertNotification.TabIndex = 101;
+            this.radioButtonAlertNotification.TabStop = true;
+            this.radioButtonAlertNotification.Text = "Alert";
+            this.radioButtonAlertNotification.UseVisualStyleBackColor = true;
+            this.radioButtonAlertNotification.CheckedChanged += new System.EventHandler(this.radioButtonAlertNotification_CheckedChanged);
             // 
-            // radioButtonIsSunriverNotification
+            // radioButtonIsNewsfeed
             // 
-            this.radioButtonIsSunriverNotification.AutoSize = true;
-            this.radioButtonIsSunriverNotification.Location = new System.Drawing.Point(151, 19);
-            this.radioButtonIsSunriverNotification.Name = "radioButtonIsSunriverNotification";
-            this.radioButtonIsSunriverNotification.Size = new System.Drawing.Size(134, 17);
-            this.radioButtonIsSunriverNotification.TabIndex = 102;
-            this.radioButtonIsSunriverNotification.Text = "Is Sunriver Notification ";
-            this.radioButtonIsSunriverNotification.UseVisualStyleBackColor = true;
+            this.radioButtonIsNewsfeed.AutoSize = true;
+            this.radioButtonIsNewsfeed.Location = new System.Drawing.Point(88, 19);
+            this.radioButtonIsNewsfeed.Name = "radioButtonIsNewsfeed";
+            this.radioButtonIsNewsfeed.Size = new System.Drawing.Size(79, 17);
+            this.radioButtonIsNewsfeed.TabIndex = 102;
+            this.radioButtonIsNewsfeed.Text = "News Feed";
+            this.radioButtonIsNewsfeed.UseVisualStyleBackColor = true;
+            this.radioButtonIsNewsfeed.CheckedChanged += new System.EventHandler(this.radioButtonIsNewsfeed_CheckedChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButtonIsTestNotification);
-            this.groupBox1.Controls.Add(this.radioButtonIsSunriverNotification);
+            this.groupBox1.Controls.Add(this.radioButtonIsEmergency);
+            this.groupBox1.Controls.Add(this.radioButtonAlertNotification);
+            this.groupBox1.Controls.Add(this.radioButtonIsNewsfeed);
             this.groupBox1.Location = new System.Drawing.Point(86, 194);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(324, 45);
             this.groupBox1.TabIndex = 103;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Notification Receiver";
+            this.groupBox1.Text = "Type of Notification";
+            // 
+            // radioButtonIsEmergency
+            // 
+            this.radioButtonIsEmergency.AutoSize = true;
+            this.radioButtonIsEmergency.Location = new System.Drawing.Point(177, 19);
+            this.radioButtonIsEmergency.Name = "radioButtonIsEmergency";
+            this.radioButtonIsEmergency.Size = new System.Drawing.Size(78, 17);
+            this.radioButtonIsEmergency.TabIndex = 103;
+            this.radioButtonIsEmergency.Text = "Emergency";
+            this.radioButtonIsEmergency.UseVisualStyleBackColor = true;
+            this.radioButtonIsEmergency.CheckedChanged += new System.EventHandler(this.radioButtonIsEmergency_CheckedChanged);
+            // 
+            // labelMapURL
+            // 
+            this.labelMapURL.AutoSize = true;
+            this.labelMapURL.Location = new System.Drawing.Point(28, 242);
+            this.labelMapURL.Name = "labelMapURL";
+            this.labelMapURL.Size = new System.Drawing.Size(59, 13);
+            this.labelMapURL.TabIndex = 104;
+            this.labelMapURL.Text = "Map URL?";
+            this.labelMapURL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelMapURL.Visible = false;
+            // 
+            // textBoxEmergencyMapURL
+            // 
+            this.textBoxEmergencyMapURL.Location = new System.Drawing.Point(87, 239);
+            this.textBoxEmergencyMapURL.Name = "textBoxEmergencyMapURL";
+            this.textBoxEmergencyMapURL.Size = new System.Drawing.Size(323, 20);
+            this.textBoxEmergencyMapURL.TabIndex = 105;
+            this.textBoxEmergencyMapURL.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 342);
+            this.Controls.Add(this.textBoxEmergencyMapURL);
+            this.Controls.Add(this.labelMapURL);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelResults);
             this.Controls.Add(this.Results);
@@ -163,9 +201,12 @@
         private System.Windows.Forms.TextBox textBoxTitle;
         private System.Windows.Forms.Label Results;
         private System.Windows.Forms.Label labelResults;
-        private System.Windows.Forms.RadioButton radioButtonIsTestNotification;
-        private System.Windows.Forms.RadioButton radioButtonIsSunriverNotification;
+        private System.Windows.Forms.RadioButton radioButtonAlertNotification;
+        private System.Windows.Forms.RadioButton radioButtonIsNewsfeed;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButtonIsEmergency;
+        private System.Windows.Forms.Label labelMapURL;
+        private System.Windows.Forms.TextBox textBoxEmergencyMapURL;
     }
 }
 

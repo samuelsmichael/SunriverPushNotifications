@@ -8,11 +8,12 @@ using Common;
 
 
 namespace SunriverNotificationsWcfService {
+    [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)]
     public class Service1 : IService1 {
         public PushNotificationReturn PushNotification(PushNotificationSend send) {
             PushNotificationReturn ret = new PushNotificationReturn();
             try {
-                NotificationManager nm = new NotificationManager(send.Title, send.Message, send.Topic,send.NotificationKey);
+                NotificationManager nm = new NotificationManager(send.Title, send.Message, send.Topic,send.NotificationKey,send.EmergencyMapURL);
                 String result=nm.SendNotification();
                 ret.SuccessMessage = result;
                 ret.WCFCallSuccess = true;
