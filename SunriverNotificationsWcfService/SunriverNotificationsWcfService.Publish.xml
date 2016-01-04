@@ -1,12 +1,12 @@
 <publishData>
   <publishTarget publishUrl="C:\inetpub\wwwroot\Sunriver\PushNotifications\">
-    <file relUrl="bin/Common.dll" publishTime="12/30/2015 15:02:59" />
-    <file relUrl="bin/SunriverNotificationsWcfService.dll" publishTime="12/30/2015 15:03:46" />
-    <file relUrl="bin/SunriverNotificationsWcfService.pdb" publishTime="12/30/2015 15:03:45" />
-    <file relUrl="SunriverNotificationsWcfService.Service1.svc" publishTime="12/30/2015 15:35:25" />
-    <file relUrl="Web.config" publishTime="12/30/2015 15:11:14" />
-    <file relUrl="bin/SunriverNotificationsWcfService.dll.config" publishTime="12/30/2015 15:11:14" />
-    <file relUrl="bin/Common.pdb" publishTime="12/30/2015 15:02:59" />
+    <file relUrl="bin/Common.dll" publishTime="12/31/2015 03:54:37" />
+    <file relUrl="bin/SunriverNotificationsWcfService.dll" publishTime="12/31/2015 03:54:45" />
+    <file relUrl="bin/SunriverNotificationsWcfService.pdb" publishTime="12/31/2015 03:54:44" />
+    <file relUrl="SunriverNotificationsWcfService.Service1.svc" publishTime="12/31/2015 04:12:19" />
+    <file relUrl="Web.config" publishTime="12/30/2015 15:52:35" />
+    <file relUrl="bin/SunriverNotificationsWcfService.dll.config" publishTime="12/30/2015 15:52:35" />
+    <file relUrl="bin/Common.pdb" publishTime="12/31/2015 03:54:36" />
   </publishTarget>
   <publishTarget publishUrl="C:\WebApplications\Sunriver\PushNotifications\">
     <file relUrl="bin/Common.dll" publishTime="12/20/2015 03:19:09" />
