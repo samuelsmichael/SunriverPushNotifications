@@ -9,28 +9,26 @@ using System.Diagnostics;
 namespace Common {
     public class Scheduler {
         #region Variables
-        public EventLog windowsLog = new EventLog("SR Push Notifications");
         private Timer mRefreshTimer = null;
-        private int mPeriodicityInMinutes;
-        private bool mIsSynchronizationEnabled;
+        private int mPeriodicityInSeconds=120;
+        private bool mIsEnabled=true;
         private DBController mDBController;
-        private string mSessionId;
-        private string mSource;
         private bool mWriteLogEntries;
+        private DoesPushNotifications mDoesPushNotifications;
         #endregion
         #region Properties
 
         public int PeriodicityInMinutes {
-            get { return mPeriodicityInMinutes; }
-            set { mPeriodicityInMinutes = value; }
+            get { return mPeriodicityInSeconds; }
+            set { mPeriodicityInSeconds = value; }
         }
 
-        public bool IsSynchronizationEnabled {
+        public bool IsEnabled {
             get {
-                return mIsSynchronizationEnabled;
+                return mIsEnabled;
             }
             set {
-                mIsSynchronizationEnabled = value;
+                mIsEnabled = value;
             }
         }
         #endregion
@@ -38,13 +36,11 @@ namespace Common {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sessionId">If comming from a web app, pass its SessionId string value,
-        ///     otherwise, pass in any value.</param>
+
         /// <param name="source">Either the web app or the windows service</param>
-        public Scheduler(string sessionId, string source) {
-            mSessionId=sessionId;
-            mSource = source;
-            mDBController = new DBController(mSessionId);
+        public Scheduler(DoesPushNotifications doesPushNotifications) {
+            mDoesPushNotifications = doesPushNotifications;
+            mDBController = new DBController(doesPushNotifications);
             mWriteLogEntries =
                 CommonRoutines.ObjectToBool(ConfigurationManager.AppSettings["WriteLogEntries"]);
         }
@@ -58,7 +54,6 @@ namespace Common {
         /// </summary>
         public void Start() {
             // fetch the latest control values
-            mDBController.getSynchronizationParameters(out mIsSynchronizationEnabled, out mPeriodicityInMinutes);
             startTimer();
         }
         /// <summary>
@@ -71,10 +66,7 @@ namespace Common {
         ///
         public void writeEventLogEntry(string entry) {
             if (mWriteLogEntries) {
-                windowsLog.Source = mSource;
-                try {
-                    windowsLog.WriteEntry(entry);
-                } catch { }
+                mDoesPushNotifications.addToLog(entry);
             }
         }
 
@@ -87,8 +79,8 @@ namespace Common {
         /// </summary>
         private void startTimer() {
             stopTimer(false);
-            double milliSeconds=mPeriodicityInMinutes*60*1000;
-            writeEventLogEntry("Starting timer loop for every: "+mPeriodicityInMinutes+ " minutes.");
+            double milliSeconds=mPeriodicityInSeconds*1000;
+            writeEventLogEntry("Starting timer loop for every: "+mPeriodicityInSeconds+ " seconds.");
             /*The first time, we do it right away*/
             milliSeconds = 1000;
             mRefreshTimer = new System.Timers.Timer(milliSeconds);
@@ -103,13 +95,10 @@ namespace Common {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void mRefreshTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e) {
-            if (mIsSynchronizationEnabled) {
+            if (mIsEnabled) {
                 writeEventLogEntry("Timer popped");
-                mDBController.synchronizeData();
+                mDBController.checkPushNotifications();
             }
-            // update control values, in case they've changed
-            mDBController.getSynchronizationParameters(out mIsSynchronizationEnabled, out mPeriodicityInMinutes);
-            mRefreshTimer.Interval = mPeriodicityInMinutes * 60 * 1000;
             // reset the timer
             mRefreshTimer.Start();
         }

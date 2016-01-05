@@ -3,7 +3,6 @@ using System.Xml;
 using System.Collections.Generic;
 using System.Text;
 using System.Configuration;
-using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.Common;
 using System.Collections.Specialized;

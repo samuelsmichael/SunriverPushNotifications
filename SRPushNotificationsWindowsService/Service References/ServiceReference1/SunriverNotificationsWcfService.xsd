@@ -4,6 +4,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:WcfSend">
         <xs:sequence>
+          <xs:element minOccurs="0" name="EmergencyMapURL" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="NotificationKey" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />

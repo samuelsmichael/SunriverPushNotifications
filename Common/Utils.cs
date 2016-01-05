@@ -88,11 +88,35 @@ namespace Common {
                 da.Fill(ds);
                 return ds;
             }  catch (Exception e) {
-                //Update1.bubba.Write("Oops.  We got an Exception.  Exception.Message:"+e.Message+" Exception statck track:"+e.StackTrace);
+                //Update1.bubba.Write("We got an Exception.  Exception.Message:"+e.Message+" Exception statck track:"+e.StackTrace);
                // Update1.bubba.End();
                 int x=3;
                 return null;
             }  finally {
+                try { command.Dispose(); } catch { }
+                try { connection.Close(); } catch { };
+            }
+        }
+        /// <summary>
+        /// Does an executeNonQuery to the database.  Note: this is for a string command, not for a stored procedure
+        /// </summary>
+        /// <param name="queryString"></param>
+        /// <param name="connectionString"></param>
+        /// <returns></returns>
+        public static void executeNonQueryFromQueryString(string queryString, string connectionString) {
+            SqlConnection connection = null;
+            SqlCommand command = null;
+            try {
+                connection = new SqlConnection(connectionString);
+                connection.Open();
+                command = new SqlCommand(queryString, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+            } catch (Exception e) {
+                //Update1.bubba.Write("We got an Exception.  Exception.Message:"+e.Message+" Exception statck track:"+e.StackTrace);
+                // Update1.bubba.End();
+                int x = 3;
+            } finally {
                 try { command.Dispose(); } catch { }
                 try { connection.Close(); } catch { };
             }
@@ -105,7 +129,6 @@ namespace Common {
         /// <param name="outputStringSize"></param>
         /// <param name="padFillCharacter"></param>
         /// <returns></returns>
-
         public static string PadString(string source, PAD_DIRECTION padDirection, int outputStringSize, char padFillCharacter) {
             if (source.Length >= outputStringSize) {
                 return source;

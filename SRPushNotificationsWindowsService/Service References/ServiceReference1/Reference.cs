@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SRPushNotificationsWindowsService.ServiceReference3 {
+namespace SRPushNotificationsWindowsService.ServiceReference1 {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,7 +17,7 @@ namespace SRPushNotificationsWindowsService.ServiceReference3 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="WcfSend", Namespace="http://schemas.datacontract.org/2004/07/SunriverNotificationsWcfService")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SRPushNotificationsWindowsService.ServiceReference3.PushNotificationSend))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SRPushNotificationsWindowsService.ServiceReference1.PushNotificationSend))]
     public partial class WcfSend : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -47,7 +47,10 @@ namespace SRPushNotificationsWindowsService.ServiceReference3 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PushNotificationSend", Namespace="http://schemas.datacontract.org/2004/07/SunriverNotificationsWcfService")]
     [System.SerializableAttribute()]
-    public partial class PushNotificationSend : SRPushNotificationsWindowsService.ServiceReference3.WcfSend {
+    public partial class PushNotificationSend : SRPushNotificationsWindowsService.ServiceReference1.WcfSend {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmergencyMapURLField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MessageField;
@@ -60,6 +63,19 @@ namespace SRPushNotificationsWindowsService.ServiceReference3 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TopicField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EmergencyMapURL {
+            get {
+                return this.EmergencyMapURLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmergencyMapURLField, value) != true)) {
+                    this.EmergencyMapURLField = value;
+                    this.RaisePropertyChanged("EmergencyMapURL");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Message {
@@ -118,7 +134,7 @@ namespace SRPushNotificationsWindowsService.ServiceReference3 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="WcfReturn", Namespace="http://schemas.datacontract.org/2004/07/SunriverNotificationsWcfService")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SRPushNotificationsWindowsService.ServiceReference3.PushNotificationReturn))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SRPushNotificationsWindowsService.ServiceReference1.PushNotificationReturn))]
     public partial class WcfReturn : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -212,7 +228,7 @@ namespace SRPushNotificationsWindowsService.ServiceReference3 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PushNotificationReturn", Namespace="http://schemas.datacontract.org/2004/07/SunriverNotificationsWcfService")]
     [System.SerializableAttribute()]
-    public partial class PushNotificationReturn : SRPushNotificationsWindowsService.ServiceReference3.WcfReturn {
+    public partial class PushNotificationReturn : SRPushNotificationsWindowsService.ServiceReference1.WcfReturn {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MessageIDField;
@@ -232,20 +248,20 @@ namespace SRPushNotificationsWindowsService.ServiceReference3 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference3.IService1")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PushNotification", ReplyAction="http://tempuri.org/IService1/PushNotificationResponse")]
-        SRPushNotificationsWindowsService.ServiceReference3.PushNotificationReturn PushNotification(SRPushNotificationsWindowsService.ServiceReference3.PushNotificationSend send);
+        SRPushNotificationsWindowsService.ServiceReference1.PushNotificationReturn PushNotification(SRPushNotificationsWindowsService.ServiceReference1.PushNotificationSend send);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : SRPushNotificationsWindowsService.ServiceReference3.IService1, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : SRPushNotificationsWindowsService.ServiceReference1.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<SRPushNotificationsWindowsService.ServiceReference3.IService1>, SRPushNotificationsWindowsService.ServiceReference3.IService1 {
+    public partial class Service1Client : System.ServiceModel.ClientBase<SRPushNotificationsWindowsService.ServiceReference1.IService1>, SRPushNotificationsWindowsService.ServiceReference1.IService1 {
         
         public Service1Client() {
         }
@@ -266,7 +282,7 @@ namespace SRPushNotificationsWindowsService.ServiceReference3 {
                 base(binding, remoteAddress) {
         }
         
-        public SRPushNotificationsWindowsService.ServiceReference3.PushNotificationReturn PushNotification(SRPushNotificationsWindowsService.ServiceReference3.PushNotificationSend send) {
+        public SRPushNotificationsWindowsService.ServiceReference1.PushNotificationReturn PushNotification(SRPushNotificationsWindowsService.ServiceReference1.PushNotificationSend send) {
             return base.Channel.PushNotification(send);
         }
     }

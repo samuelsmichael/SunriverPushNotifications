@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DBController.cs" />
     <Compile Include="DDCommon.cs" />
+    <Compile Include="DoesPushNotifications.cs" />
     <Compile Include="NotificationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scheduler.cs" />

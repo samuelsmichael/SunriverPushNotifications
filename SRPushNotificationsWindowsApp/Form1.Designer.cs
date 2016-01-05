@@ -36,7 +36,13 @@
             this.radioButtonIsEmergency = new System.Windows.Forms.RadioButton();
             this.labelMapURL = new System.Windows.Forms.Label();
             this.textBoxEmergencyMapURL = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonStartScheduler = new System.Windows.Forms.Button();
+            this.buttonStopScheduler = new System.Windows.Forms.Button();
+            this.textBoxLog = new System.Windows.Forms.TextBox();
+            this.buttonClearLog = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -168,11 +174,66 @@
             this.textBoxEmergencyMapURL.TabIndex = 105;
             this.textBoxEmergencyMapURL.Visible = false;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBoxLog);
+            this.groupBox2.Controls.Add(this.buttonStopScheduler);
+            this.groupBox2.Controls.Add(this.buttonStartScheduler);
+            this.groupBox2.Location = new System.Drawing.Point(427, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(191, 300);
+            this.groupBox2.TabIndex = 106;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Scheduler";
+            // 
+            // buttonStartScheduler
+            // 
+            this.buttonStartScheduler.Location = new System.Drawing.Point(18, 43);
+            this.buttonStartScheduler.Name = "buttonStartScheduler";
+            this.buttonStartScheduler.Size = new System.Drawing.Size(75, 23);
+            this.buttonStartScheduler.TabIndex = 0;
+            this.buttonStartScheduler.Text = "Start";
+            this.buttonStartScheduler.UseVisualStyleBackColor = true;
+            this.buttonStartScheduler.Click += new System.EventHandler(this.buttonStartScheduler_Click);
+            // 
+            // buttonStopScheduler
+            // 
+            this.buttonStopScheduler.Enabled = false;
+            this.buttonStopScheduler.Location = new System.Drawing.Point(110, 43);
+            this.buttonStopScheduler.Name = "buttonStopScheduler";
+            this.buttonStopScheduler.Size = new System.Drawing.Size(75, 23);
+            this.buttonStopScheduler.TabIndex = 1;
+            this.buttonStopScheduler.Text = "Stop";
+            this.buttonStopScheduler.UseVisualStyleBackColor = true;
+            this.buttonStopScheduler.Click += new System.EventHandler(this.buttonStopScheduler_Click);
+            // 
+            // textBoxLog
+            // 
+            this.textBoxLog.Location = new System.Drawing.Point(18, 82);
+            this.textBoxLog.Multiline = true;
+            this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.ReadOnly = true;
+            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxLog.Size = new System.Drawing.Size(167, 208);
+            this.textBoxLog.TabIndex = 2;
+            // 
+            // buttonClearLog
+            // 
+            this.buttonClearLog.Location = new System.Drawing.Point(487, 318);
+            this.buttonClearLog.Name = "buttonClearLog";
+            this.buttonClearLog.Size = new System.Drawing.Size(75, 23);
+            this.buttonClearLog.TabIndex = 107;
+            this.buttonClearLog.Text = "Clear";
+            this.buttonClearLog.UseVisualStyleBackColor = true;
+            this.buttonClearLog.Click += new System.EventHandler(this.buttonClearLog_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 342);
+            this.ClientSize = new System.Drawing.Size(630, 346);
+            this.Controls.Add(this.buttonClearLog);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.textBoxEmergencyMapURL);
             this.Controls.Add(this.labelMapURL);
             this.Controls.Add(this.groupBox1);
@@ -187,6 +248,8 @@
             this.Text = "Sunriver Send Test Notification";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,6 +270,11 @@
         private System.Windows.Forms.RadioButton radioButtonIsEmergency;
         private System.Windows.Forms.Label labelMapURL;
         private System.Windows.Forms.TextBox textBoxEmergencyMapURL;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buttonStopScheduler;
+        private System.Windows.Forms.Button buttonStartScheduler;
+        private System.Windows.Forms.TextBox textBoxLog;
+        private System.Windows.Forms.Button buttonClearLog;
     }
 }
 

@@ -33,7 +33,7 @@
   </wsdl:binding>
   <wsdl:service name="Service1">
     <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
-      <soap:address location="http://localhost:8732/Design_Time_Addresses/SunriverNotificationsWcfService/Service1/" />
+      <soap:address location="http://localhost:18732/Design_Time_Addresses/SunriverNotificationsWcfService/Service1/" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
