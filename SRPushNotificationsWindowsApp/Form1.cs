@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
-using SRPushNotificationsWindowsApp.ServiceReference5;
+using SRPushNotificationsWindowsApp.ServiceReference1;
 using Common;
 
 

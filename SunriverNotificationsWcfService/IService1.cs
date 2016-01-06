@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.ServiceModel.Web;
+
 
 namespace SunriverNotificationsWcfService {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
@@ -20,7 +22,7 @@ namespace SunriverNotificationsWcfService {
         [DataMember]
         public string SuccessMessage { get; set; }
         [DataMember]
-        public string ErrorMessage {get; set;}
+        public string ErrorMessage {get; set;} 
         [DataMember]
         public string StackTrace {get; set;}
     }
@@ -42,7 +44,6 @@ namespace SunriverNotificationsWcfService {
         [DataMember]
         public string EmergencyMapURL { get; set; }
     }
-
     [DataContract]
     public class PushNotificationReturn : WcfReturn {
         [DataMember]

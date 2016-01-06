@@ -10,6 +10,9 @@ using Common;
 namespace SunriverNotificationsWcfService {
     [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)]
     public class Service1 : IService1 {
+        public string PushNotificationRegister(String zip) {
+            return "Hi Mike!";
+        }
         public PushNotificationReturn PushNotification(PushNotificationSend send) {
             PushNotificationReturn ret = new PushNotificationReturn();
             try {
@@ -27,6 +30,7 @@ namespace SunriverNotificationsWcfService {
                     ret.StackTrace += bar + (e.StackTrace==null?"":e.StackTrace);
                     ret.ErrorMessage += bar + (e.Message==null?"":e.Message);
                     bar = "|";
+                    eInternal = eInternal.InnerException;
                 }
             }
             return ret;

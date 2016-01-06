@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b53de694-c7c7-4adb-8ba6-9bee7592a493" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:18732/Design_Time_Addresses/SunriverNotificationsWcfService/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="7c5fc515-cf87-4db0-9d90-341d2e71ac25" SourceId="1" SourceUrl="http://localhost:18732/Design_Time_Addresses/SunriverNotificationsWcfService/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="a79017f0-31cf-4e90-94c5-6957fb346eb1" SourceId="1" SourceUrl="http://localhost:18732/Design_Time_Addresses/SunriverNotificationsWcfService/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="37837de2-90cf-4bf3-95a6-79b982e3a558" SourceId="1" SourceUrl="http://localhost:18732/Design_Time_Addresses/SunriverNotificationsWcfService/Service1/mex" />
+    <MetadataFile FileName="SunriverNotificationsWcfService.xsd" MetadataType="Schema" ID="01bbd048-378f-4937-bce4-d354b40243aa" SourceId="1" SourceUrl="http://localhost:18732/Design_Time_Addresses/SunriverNotificationsWcfService/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

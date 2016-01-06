@@ -13,10 +13,20 @@
   <wsdl:message name="IService1_PushNotification_OutputMessage">
     <wsdl:part name="parameters" element="tns:PushNotificationResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_PushNotificationRegister_InputMessage">
+    <wsdl:part name="parameters" element="tns:PushNotificationRegister" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PushNotificationRegister_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PushNotificationRegisterResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="PushNotification">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PushNotification" message="tns:IService1_PushNotification_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PushNotificationResponse" message="tns:IService1_PushNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PushNotificationRegister">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PushNotificationRegister" message="tns:IService1_PushNotificationRegister_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PushNotificationRegisterResponse" message="tns:IService1_PushNotificationRegister_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -30,10 +40,19 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="PushNotificationRegister">
+      <soap:operation soapAction="http://tempuri.org/IService1/PushNotificationRegister" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service1">
     <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
-      <soap:address location="http://localhost:8732/Design_Time_Addresses/SunriverNotificationsWcfService/Service1/" />
+      <soap:address location="http://localhost:18732/Design_Time_Addresses/SunriverNotificationsWcfService/Service1/" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

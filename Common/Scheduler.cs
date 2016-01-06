@@ -80,7 +80,6 @@ namespace Common {
         private void startTimer() {
             stopTimer(false);
             double milliSeconds=mPeriodicityInSeconds*1000;
-            writeEventLogEntry("Starting timer loop for every: "+mPeriodicityInSeconds+ " seconds.");
             /*The first time, we do it right away*/
             milliSeconds = 1000;
             mRefreshTimer = new System.Timers.Timer(milliSeconds);
@@ -99,7 +98,15 @@ namespace Common {
                 writeEventLogEntry("Timer popped");
                 mDBController.checkPushNotifications();
             }
+
+            // TODO: For each "registered" longitude and latitude, lookup weather like this:
+            // http://api.wunderground.com/api/bc2f8db95e1b5405/alerts/q/37.776289,-122.395234.json
+
             // reset the timer
+            mRefreshTimer.Stop();
+            mRefreshTimer = new System.Timers.Timer(mPeriodicityInSeconds*1000);
+            mRefreshTimer.AutoReset = false;
+            mRefreshTimer.Elapsed += new System.Timers.ElapsedEventHandler(mRefreshTimer_Elapsed);
             mRefreshTimer.Start();
         }
         /// <summary>
