@@ -121,6 +121,32 @@ namespace Common {
                 try { connection.Close(); } catch { };
             }
         }
+
+
+        /// <summary>
+        /// Does an executeNonQuery to the database.  Note: this is for a string command, not for a stored procedure
+        /// </summary>
+        /// <param name="queryString"></param>
+        /// <param name="connectionString"></param>
+        /// <returns></returns>
+        public static void executeNonQueryFromQueryString(SqlCommand command, string connectionString) {
+            SqlConnection connection = null;
+            try {
+                connection = new SqlConnection(connectionString);
+                connection.Open();
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+            } catch (Exception e) {
+                //Update1.bubba.Write("We got an Exception.  Exception.Message:"+e.Message+" Exception statck track:"+e.StackTrace);
+                // Update1.bubba.End();
+                int x = 3;
+            } finally {
+                try { command.Dispose(); } catch { }
+                try { connection.Close(); } catch { };
+            }
+        }
+        
+        
         /// <summary>
         /// Takes a give string and returns a new string which is padded to outputSTringSize length, and fills it with padFillCaracter. 
         /// </summary>
@@ -275,6 +301,13 @@ namespace Common {
         public static int ObjectToInt(object obj) {
             try {
                 return Convert.ToInt32(obj);
+            } catch {
+                return 0;
+            }
+        }
+        public static long ObjectToLong(object obj) {
+            try {
+                return (long)Convert.ToDouble(obj);
             } catch {
                 return 0;
             }

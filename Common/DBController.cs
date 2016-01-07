@@ -29,35 +29,74 @@ namespace Common {
         #region Public Interface
 
         public void checkPushNotifications() {
-            try {
-                
-                string retSuccessMessage = null;
-                string sqlString="SELECT * FROM Alert WHERE isnull(ThisAlertHasBeenPushed,0)=0 AND isNull(isOnAlert,0)=1";
-                DataSet ds=Utils.getDataSetFromQuery(
-                    sqlString,
-                    getConnectionString(ConfigurationManager.AppSettings["PushNotifications"])
-                );
-                if (Utils.hasData(ds)) {
-                    foreach (DataRow dr in ds.Tables[0].Rows) {
-                        mDoesPushNotifications.addToLog("Found Alert: "+Utils.ObjectToString(dr["ALID"]));
-                        mDoesPushNotifications.pushNotification(
-                            CommonRoutines.ObjectToStringV2(dr["ALTitle"]),
-                            CommonRoutines.ObjectToStringV2(dr["ALDescription"]),
-                            ALERTTOPIC,
-                            null,
-                            out retSuccessMessage);
-                        mDoesPushNotifications.addToLog("Result of Push: "+retSuccessMessage);
-                        sqlString = "UPDATE Alert SET ThisAlertHasBeenPushed=1 WHERE ALID=" + dr["ALID"];
-                        Utils.executeNonQueryFromQueryString(sqlString, getConnectionString(ConfigurationManager.AppSettings["PushNotifications"]));
-                    }
-                }
-            } catch (Exception e) {
-                mDoesPushNotifications.addToLog("Error: "+e.ToString());
-            }
+            checkAlert(
+                "SELECT * FROM Alert WHERE isnull(HasBeenPushed,0)=0 AND isNull(isOnAlert,0)=1",
+                ALERTTOPIC,
+                "ALTitle",
+                "ALDescription",
+                "ALID",
+                "UPDATE Alert SET HasBeenPushed=1 WHERE ALID=",
+                getConnectionString(ConfigurationManager.AppSettings["PushNotificationsAlert"]),
+                false);
+            checkAlert(
+                "SELECT * FROM SRNewsfeed WHERE isnull(HasBeenPushed,0)=0 AND isNull(isOnNewsFeedAlert,0)=1",
+                NEWFEEDTOPIC,
+                "newsFeedTitle",
+                "newsFeedDescription",
+                "newsFeedID",
+                "UPDATE SRNewsfeed SET HasBeenPushed=1 WHERE newsFeedID=",
+                getConnectionString(ConfigurationManager.AppSettings["PushNotificationsNewsfeed"]),
+                false);
+            checkAlert(
+                "SELECT * FROM SREmergency WHERE isnull(HasBeenPushed,0)=0 AND isNull(isEmergencyAlert,0)=1",
+                EMERGENCYTOPIC,
+                "emergencyTitle",
+                "emergencyDescription",
+                "emergencyID",
+                "UPDATE SREmergency SET HasBeenPushed=1 WHERE emergencyID=",
+                getConnectionString(ConfigurationManager.AppSettings["PushNotificationsEmergency"]),
+                true);
         }
         #endregion
 
         #region Private Interface
+        private void checkAlert(string sqlString, string topic, string titleFieldName, string descriptionFieldName, 
+                string tableIDFieldName, string updateSQL, string connectionString, bool isEmergency) {
+            try {
+                string retSuccessMessage = null;
+                DataSet ds=Utils.getDataSetFromQuery(
+                    sqlString,
+                    connectionString
+                );
+                string emergencyMap = null;
+                if (Utils.hasData(ds)) {
+                    if (isEmergency) {
+                        DataSet dsEmergency = Utils.getDataSetFromQuery(
+                            "SELECT TOP 1 * FROM SREmergencyMaps WHERE EmergencyMapsIsVisible=1",
+                            getConnectionString(ConfigurationManager.AppSettings["PushNotificationsEmergencyMaps"]));
+                        if (Utils.hasData(dsEmergency)) {
+                            emergencyMap = Utils.ObjectToString(dsEmergency.Tables[0].Rows[0]["emergencyMapsURL"]);
+                        }
+                    }
+                    foreach (DataRow dr in ds.Tables[0].Rows) {
+                        mDoesPushNotifications.addToLog("Found " + topic + Utils.ObjectToString(dr[tableIDFieldName]));
+                        mDoesPushNotifications.pushNotification(
+                            CommonRoutines.ObjectToStringV2(dr[titleFieldName]),
+                            CommonRoutines.ObjectToStringV2(dr[descriptionFieldName]),
+                            topic,
+                            emergencyMap,
+                            out retSuccessMessage);
+                        mDoesPushNotifications.addToLog("Result of Push: "+retSuccessMessage);
+                        sqlString = updateSQL + dr[tableIDFieldName];
+                        Utils.executeNonQueryFromQueryString(sqlString, getConnectionString(ConfigurationManager.AppSettings["PushNotificationsAlert"]));
+                    }
+                }
+            } catch (Exception e) {
+                mDoesPushNotifications.addToLog("Error doing "+topic+": "+e.ToString());
+            }
+        }
+    
+
         private string getConnectionString(string name) {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
