@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunriverNotificationsWcfService", "SunriverNotificationsWcfService\SunriverNotificationsWcfService.csproj", "{8AFC714F-299A-44E0-AB6E-0963C44CFB3E}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupWindowsService", "SetupWindowsService\SetupWindowsService.vdproj", "{123B8373-4450-43DC-8CA9-5E72F7D7B890}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,12 @@ Global
 		{8AFC714F-299A-44E0-AB6E-0963C44CFB3E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8AFC714F-299A-44E0-AB6E-0963C44CFB3E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8AFC714F-299A-44E0-AB6E-0963C44CFB3E}.Release|x86.ActiveCfg = Release|Any CPU
+		{123B8373-4450-43DC-8CA9-5E72F7D7B890}.Debug|Any CPU.ActiveCfg = Debug
+		{123B8373-4450-43DC-8CA9-5E72F7D7B890}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{123B8373-4450-43DC-8CA9-5E72F7D7B890}.Debug|x86.ActiveCfg = Debug
+		{123B8373-4450-43DC-8CA9-5E72F7D7B890}.Release|Any CPU.ActiveCfg = Release
+		{123B8373-4450-43DC-8CA9-5E72F7D7B890}.Release|Mixed Platforms.ActiveCfg = Release
+		{123B8373-4450-43DC-8CA9-5E72F7D7B890}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

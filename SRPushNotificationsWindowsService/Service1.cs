@@ -48,6 +48,5 @@ namespace SRPushNotificationsWindowsService {
             PushNotificationReturn ret = client.PushNotification(send);
             retSuccessMessage = ret.SuccessMessage;
         }
-
     }
 }
