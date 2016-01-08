@@ -143,8 +143,7 @@ namespace Common {
                 // requested URI contains a query.
                 client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
 
-                Stream data = client.OpenRead("http://api.wunderground.com/api/bc2f8db95e1b5405/alerts/q/97707.json");
-          //      Stream data = client.OpenRead("http://api.wunderground.com/api/bc2f8db95e1b5405/alerts/q/94107.json");
+                Stream data = client.OpenRead("http://api.wunderground.com/api/bc2f8db95e1b5405/alerts/q/"+ConfigurationManager.AppSettings["ZipCodeForWeatherAlerts"+".json");
                 
                 StreamReader reader = new StreamReader(data);
                 string s = reader.ReadToEnd();
