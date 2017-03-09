@@ -136,99 +136,102 @@ namespace Common {
         /// <param name="e"></param>
         private void mWeatherAlertRefreshTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e) {
             if (mWeatherAlertIsEnabled) {
-                writeEventLogEntry("Weather alert timer popped");
+                try {
+                    writeEventLogEntry("Weather alert timer popped");
 
-                WebClient client = new WebClient();
-                // Add a user agent header in case the 
-                // requested URI contains a query.
-                client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
+                    WebClient client = new WebClient();
+                    // Add a user agent header in case the 
+                    // requested URI contains a query.
+                    client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
+                    string URL="http://api.wunderground.com/api/bc2f8db95e1b5405/alerts/q/" + ConfigurationManager.AppSettings["ZipCodeForWeatherAlerts"] + ".json";
+                    writeEventLogEntry("Trying URL: "+URL);
+                    Stream data = client.OpenRead(URL);
 
-                Stream data = client.OpenRead("http://api.wunderground.com/api/bc2f8db95e1b5405/alerts/q/"+ConfigurationManager.AppSettings["ZipCodeForWeatherAlerts"+".json");
-                
-                StreamReader reader = new StreamReader(data);
-                string s = reader.ReadToEnd();
-                Console.WriteLine(s);
-                data.Close();
-                reader.Close();
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-                dynamic mmm = jss.Deserialize<dynamic>(s);
-                object[] alerts = (object[])((Dictionary<string, object>)mmm)["alerts"];
-                if (alerts.Length > 0) {
-                    Object expires = ((Dictionary<string, object>)alerts[0])["expires"];
-                    object epoch=((Dictionary<string, object>)alerts[0])["expires_epoch"];
-                    Object type = ((Dictionary<string, object>)alerts[0])["type"];
-                    string emegencyTypeDescription="";
-                    switch ((string)type) {
-                        case "HUR":
-                            emegencyTypeDescription= "Hurricane Local Statement";
-                            break;
-                        case "TOR":
-                            emegencyTypeDescription= "Tornado Warning";
-                            break;
-                        case "TOW":
-                            emegencyTypeDescription= "Tornado Watch";
-                            break;
-                        case "WRN":
-                            emegencyTypeDescription= "Severe Thunderstorm Warning";
-                            break;
-                        case "SEW":
-                            emegencyTypeDescription= "Severe Thunderstorm Watch";
-                            break;
-                        case "WIN":
-                            emegencyTypeDescription= "Winter Weather Advisory";
-                            break;
-                        case "FLO":
-                            emegencyTypeDescription= "Flood Warning";
-                            break;
-                        case "WAT":
-                            emegencyTypeDescription= "Flood Watch / Statement";
-                            break;
-                        case "WND":
-                            emegencyTypeDescription= "High Wind Advisory";
-                            break;
-                        case "SVR":
-                            emegencyTypeDescription= "Severe Weather Statement";
-                            break;
-                        case "HEA": 
-                            emegencyTypeDescription= "Heat Advisory";
-                            break;
-                        case "FOG":
-                            emegencyTypeDescription= "Dense Fog Advisory";
-                            break;
-                        case "SPE":
-                            emegencyTypeDescription= "Special Weather Statement";
-                            break;
-                        case "FIR":
-                            emegencyTypeDescription= "Fire Weather Advisory";
-                            break;
-                        case "VOL":
-                            emegencyTypeDescription= "Volcanic Activity Statement";
-                            break;
-                        case "HWW":
-                            emegencyTypeDescription= "Hurricane Wind Warning";
-                            break;
-                        case "REC":
-                            emegencyTypeDescription= "Record Set";
-                            break;
-                        case "REP":
-                            emegencyTypeDescription= "Public Reports";
-                            break;
-                        case "PUB":
-                            emegencyTypeDescription = "Public Information Statement";
-                            break;
-                        default:
-                            emegencyTypeDescription = "Alert";
-                            break;
-                    }
-                    object message = ((Dictionary<string, object>)alerts[0])["message"];
-                    String messageString = ((string)message).Replace("'", " ");
-                    // truncate to fit the size of dbo.Alert
-                    int lengthOfMessage = 400;
-                    if (messageString.Length < 400) {
-                        lengthOfMessage = ((string)message).Length;
-                    }
-                    messageString = messageString.Substring(0, lengthOfMessage);
-                    
+                    StreamReader reader = new StreamReader(data);
+                    string s = reader.ReadToEnd();
+                    Console.WriteLine(s);
+                    data.Close();
+                    reader.Close();
+                    JavaScriptSerializer jss = new JavaScriptSerializer();
+                    dynamic mmm = jss.Deserialize<dynamic>(s);
+                    object[] alerts = (object[])((Dictionary<string, object>)mmm)["alerts"];
+                    if (alerts.Length > 0) {
+                        writeEventLogEntry("Alert found.");
+                        Object expires = ((Dictionary<string, object>)alerts[0])["expires"];
+                        object epoch = ((Dictionary<string, object>)alerts[0])["expires_epoch"];
+                        Object type = ((Dictionary<string, object>)alerts[0])["type"];
+                        string emegencyTypeDescription = "";
+                        switch ((string)type) {
+                            case "HUR":
+                                emegencyTypeDescription = "Hurricane Local Statement";
+                                break;
+                            case "TOR":
+                                emegencyTypeDescription = "Tornado Warning";
+                                break;
+                            case "TOW":
+                                emegencyTypeDescription = "Tornado Watch";
+                                break;
+                            case "WRN":
+                                emegencyTypeDescription = "Severe Thunderstorm Warning";
+                                break;
+                            case "SEW":
+                                emegencyTypeDescription = "Severe Thunderstorm Watch";
+                                break;
+                            case "WIN":
+                                emegencyTypeDescription = "Winter Weather Advisory";
+                                break;
+                            case "FLO":
+                                emegencyTypeDescription = "Flood Warning";
+                                break;
+                            case "WAT":
+                                emegencyTypeDescription = "Flood Watch / Statement";
+                                break;
+                            case "WND":
+                                emegencyTypeDescription = "High Wind Advisory";
+                                break;
+                            case "SVR":
+                                emegencyTypeDescription = "Severe Weather Statement";
+                                break;
+                            case "HEA":
+                                emegencyTypeDescription = "Heat Advisory";
+                                break;
+                            case "FOG":
+                                emegencyTypeDescription = "Dense Fog Advisory";
+                                break;
+                            case "SPE":
+                                emegencyTypeDescription = "Special Weather Statement";
+                                break;
+                            case "FIR":
+                                emegencyTypeDescription = "Fire Weather Advisory";
+                                break;
+                            case "VOL":
+                                emegencyTypeDescription = "Volcanic Activity Statement";
+                                break;
+                            case "HWW":
+                                emegencyTypeDescription = "Hurricane Wind Warning";
+                                break;
+                            case "REC":
+                                emegencyTypeDescription = "Record Set";
+                                break;
+                            case "REP":
+                                emegencyTypeDescription = "Public Reports";
+                                break;
+                            case "PUB":
+                                emegencyTypeDescription = "Public Information Statement";
+                                break;
+                            default:
+                                emegencyTypeDescription = "Alert";
+                                break;
+                        }
+                        object message = ((Dictionary<string, object>)alerts[0])["message"];
+                        String messageString = ((string)message).Replace("'", " ");
+                        // truncate to fit the size of dbo.Alert
+                        int lengthOfMessage = 400;
+                        if (messageString.Length < 400) {
+                            lengthOfMessage = ((string)message).Length;
+                        }
+                        messageString = messageString.Substring(0, lengthOfMessage);
+
 
                         DateTime expiresAsDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                         expiresAsDateTime = expiresAsDateTime.AddSeconds(Utils.ObjectToLong(epoch));
@@ -236,11 +239,16 @@ namespace Common {
                         Utils.executeNonQueryFromQueryString(
                             "UPDATE Alert SET isOnAlert=0",
                             getConnectionString(ConfigurationManager.AppSettings["PushNotificationsAlert"]));
-                        
+
                         Utils.executeNonQueryFromQueryString(
-                            "Insert INTO Alert SELECT '" + emegencyTypeDescription+"','"+messageString + 
-                                "',1,'"+(expiresAsDateTime.ToString())+"',0",
+                            "Insert INTO Alert SELECT '" + emegencyTypeDescription + "','" + messageString +
+                                "',1,'" + (expiresAsDateTime.ToString()) + "',0",
                             getConnectionString(ConfigurationManager.AppSettings["PushNotificationsAlert"]));
+                    } else {
+                        writeEventLogEntry("No alerts found.");
+                    }
+                } catch (Exception ee) {
+                    writeEventLogEntry("ERROR: "+ee.Message);
                 }
                
             }

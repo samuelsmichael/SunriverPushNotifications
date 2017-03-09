@@ -1,38 +1,38 @@
 <publishData>
+  <publishTarget publishUrl="C:\WebApplications\Sunriver\PushNotifications\">
+    <file relUrl="bin/Common.dll" publishTime="03/08/2017 00:19:03" />
+    <file relUrl="bin/SunriverNotificationsWcfService.dll" publishTime="03/08/2017 00:19:04" />
+    <file relUrl="bin/SunriverNotificationsWcfService.pdb" publishTime="03/08/2017 00:19:04" />
+    <file relUrl="SunriverNotificationsWcfService.Service1.svc" publishTime="03/08/2017 00:20:53" />
+    <file relUrl="Web.config" publishTime="12/30/2015 15:52:35" />
+    <file relUrl="bin/SunriverNotificationsWcfService.dll.config" publishTime="12/30/2015 15:52:35" />
+    <file relUrl="bin/Common.pdb" publishTime="03/08/2017 00:19:03" />
+  </publishTarget>
   <publishTarget publishUrl="C:\inetpub\wwwroot\Sunriver\PushNotifications\">
     <file relUrl="bin/Common.dll" publishTime="12/31/2015 03:54:37" />
-    <file relUrl="bin/SunriverNotificationsWcfService.dll" publishTime="12/31/2015 03:54:45" />
     <file relUrl="bin/SunriverNotificationsWcfService.pdb" publishTime="12/31/2015 03:54:44" />
     <file relUrl="SunriverNotificationsWcfService.Service1.svc" publishTime="12/31/2015 04:12:19" />
     <file relUrl="Web.config" publishTime="12/30/2015 15:52:35" />
-    <file relUrl="bin/SunriverNotificationsWcfService.dll.config" publishTime="12/30/2015 15:52:35" />
     <file relUrl="bin/Common.pdb" publishTime="12/31/2015 03:54:36" />
-  </publishTarget>
-  <publishTarget publishUrl="C:\WebApplications\Sunriver\PushNotifications\">
-    <file relUrl="bin/Common.dll" publishTime="12/20/2015 03:19:09" />
-    <file relUrl="bin/SunriverNotificationsWcfService.pdb" publishTime="12/20/2015 04:20:41" />
-    <file relUrl="SunriverNotificationsWcfService.Service1.svc" publishTime="12/20/2015 04:20:42" />
-    <file relUrl="Web.config" publishTime="12/19/2015 15:50:47" />
-    <file relUrl="bin/Common.pdb" publishTime="12/20/2015 03:19:08" />
-    <file relUrl="bin/SunriverNotificationsWcfService.dll.config" publishTime="12/19/2015 15:50:47" />
-    <file relUrl="bin/SunriverNotificationsWcfService.dll" publishTime="12/20/2015 04:20:41" />
+    <file relUrl="bin/SunriverNotificationsWcfService.dll.config" publishTime="12/30/2015 15:52:35" />
+    <file relUrl="bin/SunriverNotificationsWcfService.dll" publishTime="12/31/2015 03:54:45" />
   </publishTarget>
   <publishTarget publishUrl="\\10.0.0.253\wwwroot\SunriverNotificationsWcfService\">
     <file relUrl="bin/Common.dll" publishTime="12/20/2015 03:19:09" />
+    <file relUrl="bin/SunriverNotificationsWcfService.dll" publishTime="12/20/2015 03:19:10" />
     <file relUrl="bin/SunriverNotificationsWcfService.pdb" publishTime="12/20/2015 03:19:09" />
     <file relUrl="SunriverNotificationsWcfService.Service1.svc" publishTime="12/20/2015 03:25:44" />
     <file relUrl="Web.config" publishTime="12/19/2015 15:50:47" />
-    <file relUrl="bin/Common.pdb" publishTime="12/20/2015 03:19:08" />
     <file relUrl="bin/SunriverNotificationsWcfService.dll.config" publishTime="12/19/2015 15:50:47" />
-    <file relUrl="bin/SunriverNotificationsWcfService.dll" publishTime="12/20/2015 03:19:10" />
+    <file relUrl="bin/Common.pdb" publishTime="12/20/2015 03:19:08" />
   </publishTarget>
   <publishTarget publishUrl="\\10.0.0.253\wwwroot\SunriverNotificationsWebService\">
     <file relUrl="bin/Common.dll" publishTime="12/19/2015 16:14:48" />
+    <file relUrl="bin/SunriverNotificationsWcfService.dll" publishTime="12/19/2015 16:14:49" />
     <file relUrl="bin/SunriverNotificationsWcfService.pdb" publishTime="12/19/2015 16:14:48" />
     <file relUrl="SunriverNotificationsWcfService.Service1.svc" publishTime="12/19/2015 16:59:05" />
     <file relUrl="Web.config" publishTime="12/19/2015 15:50:47" />
-    <file relUrl="bin/Common.pdb" publishTime="12/19/2015 16:14:48" />
     <file relUrl="bin/SunriverNotificationsWcfService.dll.config" publishTime="12/19/2015 15:50:47" />
-    <file relUrl="bin/SunriverNotificationsWcfService.dll" publishTime="12/19/2015 16:14:49" />
+    <file relUrl="bin/Common.pdb" publishTime="12/19/2015 16:14:48" />
   </publishTarget>
 </publishData>
