@@ -17,9 +17,9 @@ namespace Common {
          * For testing (only non-published versions will see alerts), use alerttest.
          * For production, use alert
         */
-        private static string ALERTTOPIC = "alerttestinternal";
-        private static string EMERGENCYTOPIC = "emergencytestinternal";
-        private static string NEWFEEDTOPIC = "newsfeedtestinternal";
+        private static string ALERTTOPIC = "alert";
+        private static string EMERGENCYTOPIC = "emergency";
+        private static string NEWFEEDTOPIC = "newsfeed";
         #endregion
         #region Constructor
         public DBController(DoesPushNotifications doesPushNotifications) {
